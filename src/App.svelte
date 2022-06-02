@@ -2,8 +2,7 @@
   import Quiz from "./Quiz.svelte";
 </script>
 
-<h1>Hello World</h1>
-<!-- <Quiz quizName="New Quiz" /> -->
+<h1>Level Up Art Quiz</h1>
 <Quiz />
 
 <style>

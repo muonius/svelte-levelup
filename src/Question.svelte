@@ -1,5 +1,6 @@
 <script>
   export let question;
+  export let nextQuestion;
 
   let isCorrect;
   let isAnswered = false;
@@ -28,6 +29,10 @@
     isAnswered = true;
     isCorrect = correct;
   }
+
+  function nextQuestion() {
+    activeQuestion = activeQuestion + 1;
+  }
 </script>
 
 <h3>
@@ -35,16 +40,20 @@
   {@html question.question}
 </h3>
 {#if isAnswered}
-  <h4>
+  <h5>
     {#if isCorrect}
       You got it right
     {:else}
       You goofed up
     {/if}
-  </h4>
+  </h5>
 {/if}
 {#each allAnswers as answer}
-  <button on:click={() => checkQuestion(answer.correct)}
+  <button disabled={isAnswered} on:click={() => checkQuestion(answer.correct)}
     >{@html answer.answer}</button
   >
 {/each}
+<br />
+{#if isAnswered}
+  <button on:click={nextQuestion}>Next Question</button>
+{/if}
