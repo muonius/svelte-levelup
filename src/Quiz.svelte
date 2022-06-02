@@ -1,15 +1,18 @@
 <script>
-  export let quizName = "Scott Quiz";
-  let a = 0;
-  let b = 0;
-  let title = "";
+  let result = "";
+  let correctAnswer = "b";
+  function pickAnswer(answer) {
+    if (answer === correctAnswer) {
+      result = "Correct!";
+    }
+    result = "OOPs";
+  }
 </script>
 
 <div>
-  <h2>{quizName}</h2>
-  <h4>{title}</h4>
-  <input bind:value={title} type="text" />
-  <input bind:value={a} type="number" />
-  <input bind:value={b} type="number" />
-  <h4>{a + b}</h4>
+  <h4>{result}</h4>
+  <button on:click={() => pickAnswer("a")}>Answer A</button>
+  <button on:click={() => pickAnswer("b")}>Answer B</button>
+  <button on:click={() => pickAnswer("c")}>Answer C</button>
+  <button on:click={() => pickAnswer("d")}>Answer D</button>
 </div>
