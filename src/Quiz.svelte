@@ -3,16 +3,18 @@
   import { onMount, beforeUpdate, afterUpdate, onDestroy } from "svelte";
   // it will have an callback
   import Question from "./Question.svelte";
+  import Modal from "./Modal.svelte";
   let quiz = getQuiz();
   let activeQuestion = 0;
   let score = 0;
+  let isModalOpen = false;
 
   onMount(() => {
     console.log("I mounted");
   });
 
   beforeUpdate(() => {
-    console.log('before Update")
+    console.log("before Update");
   });
 
   afterUpdate(() => {
@@ -40,6 +42,7 @@
   function resetQuiz() {
     score = 0;
     activeQuestion = 0;
+    isModalOpen = false;
     quiz = getQuiz();
   }
 
@@ -48,16 +51,15 @@
   }
 
   //reactive statement
-  $: if (score > 1) {
-    alert("You won!");
-    resetQuiz;
+  $: if (score > 0) {
+    isModalOpen = true;
   }
 
   $: questionNumber = activeQuestion + 1;
 </script>
 
 <div>
-  <button on:click| once={resetQuiz}>Start New Quiz</button>
+  <button on:click|once={resetQuiz}>Start New Quiz</button>
 
   <h3>My Score: {score}</h3>
   <!-- reactive declaration -->
@@ -75,6 +77,13 @@
     {/each}
   {/await}
 </div>
+{#if isModalOpen}
+  <Modal>
+    <h2>You won!</h2>
+    <p>Congratualtions!</p>
+    <button on:click={resetQuiz}>Start Over</button>
+  </Modal>
+{/if}
 
 <style>
   .fade-wrapper {
