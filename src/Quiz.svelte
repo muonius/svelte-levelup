@@ -1,9 +1,28 @@
 <script>
   import { fade, blur, fly, slide, scale } from "svelte/transition";
+  import { onMount, beforeUpdate, afterUpdate, onDestroy } from "svelte";
+  // it will have an callback
   import Question from "./Question.svelte";
   let quiz = getQuiz();
   let activeQuestion = 0;
   let score = 0;
+
+  onMount(() => {
+    console.log("I mounted");
+  });
+
+  beforeUpdate(() => {
+    console.log('before Update")
+  });
+
+  afterUpdate(() => {
+    console.log("after Update");
+  });
+
+  onDestroy(() => {
+    console.log("on destroy");
+  });
+  //only work on the client side
 
   async function getQuiz() {
     const res = await fetch(
