@@ -42,7 +42,7 @@
   {:then data}
     {#each data.results as question, index}
       {#if index === activeQuestion}
-        <div transition:fade class="fade-wrapper">
+        <div in:fly={{ x: 100 }} out:fly={{ x: -200 }} class="fade-wrapper">
           <Question {addToScore} {nextQuestion} {question} />
         </div>
       {/if}
