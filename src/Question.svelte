@@ -40,7 +40,9 @@
   {@html question.question}
 </h3>
 {#if isAnswered}
-  <h5>
+  <!-- <h5 class={isCorrect ? "correct" : "wrong"}>-->
+  <!-- <h5 class:correct={isCorrect}> -->
+  <h5 class:isCorrect class:wrong={!isCorrect}>
     {#if isCorrect}
       You got it right
     {:else}
@@ -59,3 +61,16 @@
     <button on:click={nextQuestion}>Next Question</button>
   </div>
 {/if}
+
+<style>
+  h5 {
+    color: purple;
+  }
+  h5.wrong {
+    color: red;
+  }
+
+  h5.isCorrect {
+    color: aquamarine;
+  }
+</style>

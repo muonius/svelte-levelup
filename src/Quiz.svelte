@@ -57,7 +57,7 @@
 </script>
 
 <div>
-  <button on:click={resetQuiz}>Start New Quiz</button>
+  <button on:click| once={resetQuiz}>Start New Quiz</button>
 
   <h3>My Score: {score}</h3>
   <!-- reactive declaration -->
