@@ -30,9 +30,7 @@
     isCorrect = correct;
   }
 
-  function nextQuestion() {
-    activeQuestion = activeQuestion + 1;
-  }
+ 
 </script>
 
 <h3>
