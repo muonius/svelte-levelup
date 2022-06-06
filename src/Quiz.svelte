@@ -62,17 +62,19 @@
   <!-- reactive declaration -->
   <h4>Question #{questionNumber}</h4>
 
-  {#await quiz}
-    Loading...
-  {:then data}
-    {#each data.results as question, index}
-      {#if index === activeQuestion}
-        <div in:fly={{ x: 100 }} out:fly={{ x: -200 }} class="fade-wrapper">
-          <Question {nextQuestion} {question} />
-        </div>
-      {/if}
-    {/each}
-  {/await}
+  <div class="container">
+    {#await quiz}
+      Loading...
+    {:then data}
+      {#each data.results as question, index}
+        {#if index === activeQuestion}
+          <div in:fly={{ x: 100 }} out:fly={{ x: -200 }} class="fade-wrapper">
+            <Question {nextQuestion} {question} />
+          </div>
+        {/if}
+      {/each}
+    {/await}
+  </div>
 </div>
 {#if isModalOpen}
   <Modal on:close={resetQuiz}>
@@ -85,5 +87,9 @@
 <style>
   .fade-wrapper {
     position: absolute;
+  }
+
+  .container {
+    min-height: 500px;
   }
 </style>

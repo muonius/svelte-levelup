@@ -58,13 +58,13 @@
 <br />
 {#if isAnswered}
   <div>
-    <button on:click={nextQuestion}>Next Question</button>
+    <button class="answer" on:click={nextQuestion}>Next Question</button>
   </div>
 {/if}
 
 <style>
   h5 {
-    color: purple;
+    color: navy;
   }
   h5.wrong {
     color: red;
@@ -72,5 +72,8 @@
 
   h5.isCorrect {
     color: aquamarine;
+  }
+  .answer {
+    display: block;
   }
 </style>
